@@ -46,7 +46,9 @@ uploadBtn.addEventListener("click", async () => {
 
             <p><strong>AI Feedback:</strong></p>
 
-            <pre>${data.ai_feedback}</pre>
+            <pre style="white-space: pre-wrap; font-family: Arial, sans-serif;">
+            ${data.ai_feedback}
+            </pre>
         `;
 
     } catch (error) {
