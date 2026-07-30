@@ -9,20 +9,17 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# Routers
 app.include_router(router)
 app.include_router(predict_router)
 
-# CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Baad me isme apna Vercel URL daal dena
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Health Check
 @app.get("/")
 def home():
     return {
