@@ -1,27 +1,31 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.staticfiles import StaticFiles
-from fastapi.responses import FileResponse
 
 from app.api.upload import router
 from app.api.predict import router as predict_router
 
-app = FastAPI()
+app = FastAPI(
+    title="TruthHire AI API",
+    version="1.0.0"
+)
 
+# Routers
 app.include_router(router)
 app.include_router(predict_router)
 
+# CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["*"],  # Baad me isme apna Vercel URL daal dena
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-app.mount("/static", StaticFiles(directory="frontend"), name="static")
-
-
+# Health Check
 @app.get("/")
 def home():
-    return FileResponse("frontend/index.html")
+    return {
+        "status": "success",
+        "message": "TruthHire AI Backend is Running 🚀"
+    }
