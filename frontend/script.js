@@ -18,7 +18,7 @@ uploadBtn.addEventListener("click", async () => {
 
     try {
 
-        const response = await fetch("https://truthhire-api.onrender.com/upload", {
+        const response = await fetch("https://truthhire-api-eygk.onrender.com/upload", {
             method: "POST",
             body: formData
         });
