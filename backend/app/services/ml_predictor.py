@@ -1,6 +1,9 @@
 import joblib
+from pathlib import Path
 
-model = joblib.load("saved_models/resume_model.pkl")
+MODEL_PATH = Path(__file__).resolve().parents[2] / "saved_models" / "resume_model.pkl"
+
+model = joblib.load(MODEL_PATH)
 
 def predict_resume(features):
     prediction = model.predict([features])
